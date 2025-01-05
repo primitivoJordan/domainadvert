@@ -3,80 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="This domain is for sale. Contact us!">
-    <title>Domain For Sale</title>
+    <title>Contact Us</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #000000;
+        /* Reset default margin and padding */
+        body, html {
             margin: 0;
             padding: 0;
+            width: 100%;
+            height: 100%;
         }
-        h1 {
-            color: #d21f1f;
-            margin-top: 60px;
+
+        /* Background styling */
+        body {
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
-        p {
-            color: #8224b8;
-            font-size: 1.2em;
-        }
-        .recaptcha-container {
-            margin-top: 30px;
-            display: inline-block;
-            background: #fff;
+
+        /* Form container styling */
+        .form-container {
+            background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
             padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            max-width: 400px;
+            width: 90%;
         }
-        button {
-            padding: 10px 20px;
-            font-size: 1em;
-            background-color: #007BFF;
-            color: #fff;
+
+        /* Input and button styling */
+        input, textarea, button {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        input, textarea {
+            background: #f9f9f9;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
             cursor: pointer;
         }
+
         button:hover {
-            background-color: #1d65b3;
+            background: #0056b3;
         }
-        .email-container {
-            display: none;
-            margin-top: 20px;
-            font-size: 1.2em;
-            color: #333;
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
         }
-        .email-container span {
-            font-weight: bold;
+
+        h1 {
+            margin-bottom: 20px;
         }
     </style>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-    <h1>This Domain Is For Sale</h1>
-    <p>If you are interested in purchasing this domain, please complete the CAPTCHA below to view the contact email.</p>
+    <div class="form-container">
+        <h1>Contact Us</h1>
+        <form action="https://formspree.io/f/{your-form-id}" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
 
-    <div class="recaptcha-container">
-        <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
-        <button id="submit-captcha">Submit</button>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
     </div>
-
-    <div class="email-container" id="email-container">
-        Contact us at: <span>example@domain.com</span>
-    </div>
-
-    <script>
-        document.getElementById("submit-captcha").addEventListener("click", () => {
-            const recaptchaResponse = grecaptcha.getResponse();
-            if (recaptchaResponse.length === 0) {
-                alert("Please complete the CAPTCHA to proceed.");
-            } else {
-                document.querySelector(".recaptcha-container").style.display = "none";
-                document.getElementById("email-container").style.display = "block";
-            }
-        });
-    </script>
 </body>
 </html>
