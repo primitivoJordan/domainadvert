@@ -3,88 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Domain Inquiry</title>
     <style>
-        /* Reset default margin and padding */
-        body, html {
+        /* Font options (choose one) */
+        /* font-family: 'Arial', sans-serif; */
+        /* font-family: 'Helvetica', sans-seriff; */
+        /* font-family: 'Georgia', serif; */
+        /* font-family: 'Roboto', sans-serif; */  /* Requires Google Fonts link below */
+        
+        body {
             margin: 0;
             padding: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        /* Background styling */
-        body {
-            background: url('https://github.com/primitivoJordan/domainadvert/tree/main/images') no-repeat center center fixed;
+            min-height: 100vh;
+            background-color: black;
+            background-image: url('background.jpg');
             background-size: cover;
-            font-family: Arial, sans-serif;
-            color: rgb(0, 0, 0);
+            background-position: center;
+            color: white;
+            font-family: Arial, sans-serif; /* Default font */
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             text-align: center;
         }
 
-        /* Form container styling */
-        .form-container {
-            background: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
-            padding: 20px;
+        .content {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            margin: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            max-width: 400px;
-            width: 90%;
-        }
-
-        /* Input and button styling */
-        input, textarea, button {
-            width: 100%;
-            margin-bottom: 15px;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        input, textarea {
-            background: #f9f9f9;
-        }
-
-        button {
-            background: #007bff;
-            color: white;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #0056b3;
-        }
-
-        label {
-            font-size: 14px;
-            margin-bottom: 5px;
-            display: block;
+            max-width: 600px;
         }
 
         h1 {
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        a {
+            color: #00ff00;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border: 2px solid #00ff00;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #00ff00;
+            color: black;
         }
     </style>
+    
+    <!-- Uncomment for Roboto font -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> -->
 </head>
 <body>
-    <div class="form-container">
-        <h1>Contact Us If You're Interested in Buying this Domain</h1>
-        <form action="https://formspree.io/f/{your-form-id}" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Your Name" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Your Email" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
-
-            <button type="submit">Send Message</button>
-        </form>
+    <div class="content">
+        <h1>If you're interested in buying this domain please get in touch</h1>
+        <a href="https://formspree.io/f/YOUR_FORM_ID" target="_blank">Contact Form</a>
     </div>
 </body>
 </html>
