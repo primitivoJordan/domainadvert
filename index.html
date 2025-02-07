@@ -4,65 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Domain Inquiry</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
     <style>
-        /* Font options (choose one) */
-        /* font-family: 'Arial', sans-serif; */
-        /* font-family: 'Helvetica', sans-seriff; */
-        /* font-family: 'Georgia', serif; */
-        /* font-family: 'Roboto', sans-serif; */  /* Requires Google Fonts link below */
-        
-        body {
+        :root {
+            --main-font: 'Space Mono', monospace; /* Default to computer font */
+            --alt-font: Arial, sans-serif;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             min-height: 100vh;
-            background-color: black;
-            background-image: url('background.png');
+            background-color: #000;
+            background-image: url('images/background.jpg');
             background-size: cover;
             background-position: center;
-            color: white;
-            font-family: Arial, sans-serif; /* Default font */
+            color: #00ff00; /* Classic green terminal color */
+            font-family: var(--main-font);
+            line-height: 1.6;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
+            padding: 20px;
         }
 
-        .content {
-            background-color: rgba(0, 0, 0, 0.7);
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.85);
             padding: 2rem;
-            margin: 2rem;
-            border-radius: 10px;
-            max-width: 600px;
+            border-radius: 5px;
+            max-width: 800px;
+            width: 90%;
+            margin: 2rem 0;
+            border: 1px solid #00ff00;
         }
 
         h1 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
         }
 
-        a {
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            background: #000;
+            border: 1px solid #00ff00;
             color: #00ff00;
-            text-decoration: none;
-            font-size: 1.2rem;
-            padding: 10px 20px;
+            font-family: var(--main-font);
+        }
+
+        button {
+            background: #000;
+            color: #00ff00;
             border: 2px solid #00ff00;
-            border-radius: 5px;
+            padding: 1rem 2rem;
+            font-family: var(--main-font);
+            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        a:hover {
-            background-color: #00ff00;
-            color: black;
+        button:hover {
+            background: #00ff00;
+            color: #000;
+        }
+
+        /* Font Options (choose one) */
+        /* Modern font option: */
+        /* --main-font: 'Helvetica Neue', sans-serif; */
+        /* Classic serif: */
+        /* --main-font: Georgia, serif; */
+        /* System monospace: */
+        /* --main-font: 'Courier New', Courier, monospace; */
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            
+            body {
+                padding: 10px;
+                background-image: none;
+            }
         }
     </style>
-    
-    <!-- Uncomment for Roboto font -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> -->
 </head>
 <body>
-    <div class="content">
+    <div class="overlay">
         <h1>If you're interested in buying this domain please get in touch</h1>
-        <a href="https://formspree.io/f/YOUR_FORM_ID" target="_blank">Contact Form</a>
+        
+        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <!-- Honeypot field -->
+            <input type="text" name="_gotcha" style="display:none">
+            
+            <!-- Optional: Add basic browser check -->
+            <input type="hidden" name="_subject" value="New Domain Inquiry">
+            
+            <!-- Your form fields -->
+            <input type="email" name="email" required>
+            <textarea name="message" required></textarea>
+            
+            <button type="submit">Send</button>
+            </form>
     </div>
 </body>
 </html>
