@@ -165,14 +165,14 @@
                 });
 
                 document.getElementById("message").addEventListener("input", function () {
-                let firstChar = this.value.trim().charAt(0);
-                if (/[\u0590-\u05FF\u0600-\u06FF]/.test(firstChar)) { // Hebrew, Arabic, Persian range
-                this.style.direction = "rtl";
-                this.style.textAlign = "right";
-                } else {
-                this.style.direction = "ltr";
-                this.style.textAlign = "left";
-                }
+                    let firstChar = this.value.trim().charAt(0);
+                    if (/[\u0590-\u05FF\u0600-\u06FF]/.test(firstChar)) { // Hebrew, Arabic, Persian range
+                        this.style.direction = "rtl";
+                        this.style.textAlign = "right";
+                    } else {
+                        this.style.direction = "ltr";
+                        this.style.textAlign = "left";
+                    }
                 });
             </script>
         </form>
