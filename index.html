@@ -33,18 +33,28 @@
         }
 
         .overlay {
-            background-color: rgba(77, 56, 150, 0.85);
+            background-color: #4e347f;
             padding: 2rem;
             border-radius: 5px;
             max-width: 800px;
             width: 90%;
             margin: 2rem 0;
-            border: 1px solid #41127d;
+            border: 1px solid #00ff00;
         }
 
         h1 {
             font-size: 2rem;
             margin-bottom: 2rem;
+            color: #00ff00;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            color: #00ff00;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-align: center;
@@ -61,7 +71,7 @@
 
         input, textarea {
             width: 100%;
-            padding: 0.8rem;
+            padding: 1.2rem;
             background: #000;
             border: 1px solid #00ff00;
             color: #00ff00;
@@ -71,11 +81,12 @@
         button {
             background: #000;
             color: #00ff00;
-            border: 2px solid #00ff00;
+            border: 2px solid #cfec11;
             padding: 1rem 2rem;
             font-family: var(--main-font);
             cursor: pointer;
             transition: all 0.3s ease;
+            float:right;
         }
 
         button:hover {
@@ -106,19 +117,21 @@
 <body>
     <div class="overlay">
         <h1>If you're interested in buying this domain please get in touch</h1>
-        
+        <h2>如果您有兴趣购买该域名，请联系我们</h2>
+        <h2>Si está interesado en comprar este dominio por favor póngase en contacto</h2>
+        <h2>אם אתה מעוניין לקנות דומיין זה אנא צור קשר</h2>
         <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <!-- Honeypot field -->
+            <!-- Honeypot field (some form of spam protection)-->
             <input type="text" name="_gotcha" style="display:none">
             
-            <!-- Optional: Add basic browser check -->
+            <!-- This is adds a subject to the email that Formspree makes -->
             <input type="hidden" name="_subject" value="New Domain Inquiry">
             
             <!-- Your form fields -->
-            <input type="email" name="email" required>
-            <textarea name="message" required></textarea>
+            <input id="email" rows="1" type="email" name="email" placeholder="Type your (email / 电子邮件 / correo / אֶלֶקטרוֹנִי) here..." required>
+            <textarea id="message" rows="1" name="message" placeholder="Type your (message / 信息 / mensaje / הוֹדָעָה) here..." required style="margin-top: 1rem;"></textarea>
             
-            <button type="submit">Send</button>
+            <button type="submit" required style="margin-top: 1rem;">Send / 发送 / Enviar / שלח</button>
             </form>
     </div>
 </body>
