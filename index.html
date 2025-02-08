@@ -76,6 +76,7 @@
             border: 1px solid #00ff00;
             color: #00ff00;
             font-family: var(--main-font);
+            font-size:1rem;
         }
 
         button {
@@ -90,8 +91,14 @@
         }
 
         button:hover {
-            background: #00ff00;
+            background: #cfec11;
             color: #000;
+        }
+
+        input:focus, textarea:focus {
+        outline: none;
+        border: 2px solid #cfec11; /* Custom border color */
+        box-shadow: 0 0 5px rgba(255, 204, 0, 0.5); /* Soft glow effect */
         }
 
         /* Font Options (choose one) */
@@ -128,10 +135,29 @@
             <input type="hidden" name="_subject" value="New Domain Inquiry">
             
             <!-- Your form fields -->
-            <input id="email" rows="1" type="email" name="email" placeholder="Type your (email / 电子邮件 / correo / אֶלֶקטרוֹנִי) here..." required>
-            <textarea id="message" rows="1" name="message" placeholder="Type your (message / 信息 / mensaje / הוֹדָעָה) here..." required style="margin-top: 1rem;"></textarea>
+            <input id="email" rows="1" type="email" name="email" placeholder="email / 电子邮件 / correo / אֶלֶקטרוֹנִי" required>
+            
+            <textarea id="message" name="message" placeholder="message / 信息 / mensaje / הוֹדָעָה" required
+            style="margin-top: 1rem; height: 150px; resize: none; overflow: hidden;"></textarea>
             
             <button type="submit" required style="margin-top: 1rem;">Send / 发送 / Enviar / שלח</button>
+
+            <script>
+                const textarea = document.getElementById("message");
+                textarea.addEventListener("input", function () {
+                    const maxLines = 7; // Set max lines based on the height
+                    const maxChars = 500; // Set max characters
+                    let lines = textarea.value.split("\n");
+                    // Limit total characters
+                    if (textarea.value.length > maxChars) {
+                        textarea.value = textarea.value.substring(0, maxChars);
+                    }
+                    // Limit number of lines
+                    if (lines.length > maxLines) {
+                        textarea.value = lines.slice(0, maxLines).join("\n");
+                    }
+                });
+            </script>
             </form>
     </div>
 </body>
