@@ -98,7 +98,6 @@
         input:focus, textarea:focus {
         outline: none;
         border: 2px solid #cfec11; /* Custom border color */
-        box-shadow: 0 0 5px rgba(255, 204, 0, 0.5); /* Soft glow effect */
         }
 
         /* Font Options (choose one) */
@@ -138,7 +137,9 @@
             <input id="email" rows="1" type="email" name="email" placeholder="email / 电子邮件 / correo / אֶלֶקטרוֹנִי" required>
             
             <textarea id="message" name="message" placeholder="message / 信息 / mensaje / הוֹדָעָה" required
-            style="margin-top: 1rem; height: 150px; resize: none; overflow: hidden;"></textarea>
+            style="margin-top: 1rem; height: 150px; resize: none; overflow: hidden; text-align: left; direction: ltr;"></textarea>
+
+            
             
             <button type="submit" required style="margin-top: 1rem;">Send / 发送 / Enviar / שלח</button>
 
@@ -157,8 +158,19 @@
                         textarea.value = lines.slice(0, maxLines).join("\n");
                     }
                 });
+
+                document.getElementById("message").addEventListener("input", function () {
+                let firstChar = this.value.trim().charAt(0);
+                if (/[\u0590-\u05FF\u0600-\u06FF]/.test(firstChar)) { // Hebrew, Arabic, Persian range
+                this.style.direction = "rtl";
+                this.style.textAlign = "right";
+                } else {
+                this.style.direction = "ltr";
+                this.style.textAlign = "left";
+                }
+                });
             </script>
-            </form>
+        </form>
     </div>
 </body>
 </html>
