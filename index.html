@@ -146,8 +146,6 @@
 
             <button type="submit" required style="margin-top: 1rem;">Send / 发送 / Enviar / שלח</button>
 
-            <p id="my-form-status"></p>
-
             <script>
                 const textarea = document.getElementById("message");
                 textarea.addEventListener("input", function () {
@@ -207,6 +205,7 @@
                 form.addEventListener("submit", handleSubmit)
             </script>
         </form>
+        <p id="my-form-status" style="color: #00ff00; font-size: 1.5rem;"></p>
     </div>
 </body>
 </html>
