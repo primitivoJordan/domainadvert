@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domain Inquiry</title>
+    <title>dommmes.ai</title>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -131,7 +131,7 @@
         <h2>如果您有兴趣购买该域名，请联系我们</h2>
         <h2>Si está interesado en comprar este dominio por favor póngase en contacto</h2>
         <h2>אם אתה מעוניין לקנות דומיין זה אנא צור קשר</h2>
-        <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <form id="main-form" action="https://formspree.io/f/xqaelnpp" method="POST">
             <!-- Honeypot field (some form of spam protection)-->
             <input type="text" name="_gotcha" style="display:none">
             
@@ -144,9 +144,9 @@
             <textarea id="message" name="message" placeholder="message / 信息 / mensaje / הוֹדָעָה" required
             style="margin-top: 1rem; height: 150px; resize: none; overflow: hidden; text-align: left; direction: ltr;"></textarea>
 
-            
-            
             <button type="submit" required style="margin-top: 1rem;">Send / 发送 / Enviar / שלח</button>
+
+            <p id="my-form-status"></p>
 
             <script>
                 const textarea = document.getElementById("message");
@@ -174,6 +174,37 @@
                         this.style.textAlign = "left";
                     }
                 });
+
+
+                var form = document.getElementById("main-form");
+                async function handleSubmit(event) {
+                    event.preventDefault();
+                    var status = document.getElementById("my-form-status");
+                    var data = new FormData(event.target);
+                    fetch(event.target.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                    }).then(response => {
+                    if (response.ok) {
+                        status.innerHTML = "Thank you for your submission!";
+                        form.reset()
+                    } else {
+                        response.json().then(data => {
+                        if (Object.hasOwn(data, 'errors')) {
+                            status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                        } else {
+                            status.innerHTML = "Oops! There was a problem submitting your form"
+                        }
+                        })
+                    }
+                    }).catch(error => {
+                    status.innerHTML = "Oops! There was a problem submitting your form"
+                    });
+                }
+                form.addEventListener("submit", handleSubmit)
             </script>
         </form>
     </div>
